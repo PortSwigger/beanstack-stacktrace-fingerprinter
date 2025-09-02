@@ -19,7 +19,7 @@
 
 // Source: https://raw.githubusercontent.com/alphazero/Blake2b/master/src/main/java/ove/crypto/digest/Blake2b.java
 
-package burp;
+package beanstack;
 
 import java.io.PrintStream;
 import java.io.Serializable;
@@ -27,8 +27,8 @@ import java.security.Key;
 import java.security.spec.AlgorithmParameterSpec; // JCE not supported / anticipated ..
 import java.util.Arrays;
 
-import static burp.Blake2b.Engine.Assert.*;
-import static burp.Blake2b.Engine.LittleEndian.*;
+import static beanstack.Blake2b.Engine.Assert.*;
+import static beanstack.Blake2b.Engine.LittleEndian.*;
 
 
 /**  */

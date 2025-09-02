@@ -1,6 +1,6 @@
-package burp;
+package beanstack;
 
-import burp.*;
+import burp.IBurpExtenderCallbacks;
 
 class GlobalVars {
 	/* We're all hackers: if you want to hack on this client, that's great!
@@ -12,9 +12,9 @@ class GlobalVars {
 	*/
 	public static final String USER_AGENT = "X41-BeanStack-BApp";
 
-	public static final String EXTENSION_NAME = "X41 BeanStack (beta)";
+	public static final String EXTENSION_NAME = "X41 BeanStack";
 	public static final String EXTENSION_NAME_SHORT = "BeanStack";
-	public static final String VERSION = "0.6.1";
+	public static final String VERSION = "0.7.0";
 	public static final String REGURL = "https://beanstack.io";
 	public static final String SETTINGDOCURL = "https://beanstack.io/settings.html";
 	public static final String CVEURL = "https://nvd.nist.gov/vuln/detail/";
@@ -23,7 +23,7 @@ class GlobalVars {
 	public static final int SLEEP_MAXTIME = 15; // s
 
 	public static IBurpExtenderCallbacks callbacks;
-	public static Config config;
+	public static beanstack.Config config;
 	public static java.io.PrintStream debug = System.out;
 
 	public static void debug(Object o) {
