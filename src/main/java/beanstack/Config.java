@@ -4,26 +4,22 @@
 //Copyright 2016 PortSwigger Web Security
 //Copyright 2016 James Kettle <albinowax@gmail.com>
 
-package burp;
-import burp.*;
+package beanstack;
 
-import burp.GlobalVars;
+import burp.IContextMenuFactory;
+import burp.IContextMenuInvocation;
+
+import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
 import java.text.NumberFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-import javax.swing.text.NumberFormatter;
-
 
 // ###########################################################################
 // The class that actually holds the config
