@@ -16,10 +16,11 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BurpExtender implements IBurpExtender, IHttpListener {
+public class BurpExtender implements IBurpExtender, IHttpListener, IExtensionStateListener {
 	// Dictionary mapping request body hashes to response bodies
 	private Map<ByteBuffer, String> HttpReqMemoization;
 
@@ -44,6 +45,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 
 		GlobalVars.callbacks.setExtensionName(GlobalVars.EXTENSION_NAME);
 		GlobalVars.callbacks.registerHttpListener(this);
+        GlobalVars.callbacks.registerExtensionStateListener(this);
 
 		this.AlreadyFingerprinted = new HashSet<ByteBuffer>();
 		this.HttpReqMemoization = new HashMap<ByteBuffer, String>();
@@ -92,6 +94,24 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 			}
 		});
 	}
+
+    @Override
+    public void extensionUnloaded() {
+        GlobalVars.debug("Extension unloading: shutting down thread pool...");
+        if (threader != null) {
+            threader.shutdownNow();
+
+            try {
+                if (!threader.awaitTermination(5, TimeUnit.SECONDS)) {
+                    GlobalVars.debug("Thread pool did not terminate within timeout.");
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            threader = null;
+        }
+    }
 
 	private String cvssToBurpSeverity(float cvss) {
 		// Based on https://www.first.org/cvss/specification-document#5-Qualitative-Severity-Rating-Scale
