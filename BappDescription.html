@@ -1,9 +1,30 @@
-<p>Java Fingerprinting using Stack Traces.</p>
+<p>
+    This extension automatically identifies Java frameworks and libraries by analyzing stack traces found in HTTP
+    responses. It sends stack traces to the BeanStack API for fingerprinting and reports identified versions along with
+    associated CVEs directly in the Burp Suite dashboard.
+</p>
 
-<b>Note that this extension sends potentially private stack-traces to a third party for processing.</b>
+<p>
+    <strong>Note:</strong> This extension sends potentially private stack traces to a third-party service (beanstack.io)
+    for processing.
+</p>
 
-<h4>Extension Usage</h4>
-<p>Browse to a website with a nice stack trace (such as <a href="https://beanstack.io" rel="nofollow">beanstack.io</a>)
-and make sure the response passes through the Burp proxy. It should
-automatically be picked up, query the API (in the background), and produce an
-"Issue" in the Dashboard or Target tab.</p>
+<h2>Features</h2>
+<ul>
+    <li>Automatically detects Java stack traces in proxy traffic and API responses</li>
+    <li>Identifies specific versions of frameworks and libraries from stack trace patterns</li>
+    <li>Reports known CVEs with CVSS scores for identified versions (requires free API key)</li>
+    <li>Creates scan issues organized by product or optionally by individual CVE</li>
+    <li>Supports privacy-enhanced mode that hashes stack traces before submission</li>
+    <li>Configurable class prefix blacklist to exclude internal or sensitive traces</li>
+</ul>
+
+<h2>Usage</h2>
+<ol>
+    <li>Browse to a website that displays Java stack traces through the Burp proxy</li>
+    <li>The extension automatically detects stack traces in HTTP responses</li>
+    <li>View fingerprinting results as scan issues in the Dashboard or Target tab</li>
+    <li>Optional: Register for a free API key at <a href="https://beanstack.io/signup.html"
+            rel="nofollow">beanstack.io</a> to enable CVE detection</li>
+    <li>Optional: Configure settings via the BeanStack menu or right-click context menu in the Issues list</li>
+</ol>
