@@ -2,12 +2,12 @@ Uuid: 2da0e069b2944fcab691f6d00b165078
 ExtensionType: 1
 Name: BeanStack - Stack-trace Fingerprinter
 RepoName: beanstack-stacktrace-fingerprinter
-ScreenVersion: 0.6.1a
-SerialVersion: 5
-MinPlatformVersion: 0
+ScreenVersion: 0.7.0
+SerialVersion: 6
+MinPlatformVersion: 2
 ProOnly: True
 Author: BeanStack
 ShortDescription: Java Fingerprinting using Stack Traces.
-EntryPoint: build/libs/beanstack.jar
+EntryPoint: beanstack.jar
 BuildCommand: ./gradlew build
 SupportedProducts: Pro
