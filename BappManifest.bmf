@@ -9,5 +9,5 @@ ProOnly: True
 Author: BeanStack
 ShortDescription: Java Fingerprinting using Stack Traces.
 EntryPoint: build/libs/beanstack.jar
-BuildCommand: gradle jar
+BuildCommand: ./gradlew build
 SupportedProducts: Pro
